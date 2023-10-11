@@ -1,23 +1,39 @@
+from flask import render_template
 from app import app
 
-
+user = {'username': 'John'}
 @app.route("/")
 @app.route("/index")
 def index():
-    return "This is index page"
+    
+    title="Home"
+    posts = [
+        {
+            'author': {'username': 'John'},
+            'body': 'Beautiful day in Portland!'
+        },
+        {
+            'author': {'username': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
+        }
+    ]
+    return render_template("index.html", title=title, user=user , posts=posts)
 
 
 @app.route("/hello")
 def hello():
-    return "THis is hello page"
+    message = {'message': 'Hello'}
+    return render_template("hello.html", message=message,user=user )
 
 
-@app.route("/greeting")
+@app.route("/greetings")
 def greeting():
-    return "This is greetings page"
+    greeting = {'greeting': 'Welcome'}
+    return  render_template("greetings.html", greeting=greeting,user=user )
 
 
-@app.route("/message")
+@app.route("/messages")
 def message():
-    return "This is message page"
+    message = {'message': 'Welcome to Microblog'}
+    return render_template("message.html", message=message,user=user )
     

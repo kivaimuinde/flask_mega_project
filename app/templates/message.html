@@ -1,0 +1,10 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h1><i>Logged in as {{ user.username }}</h1> </i>
+<hr/>
+<div>
+    <p>This is messages page. Main message conctent to be displayed here</p>
+    <p> Main Message : <b>{{message.message}}</b></p>
+</div>
+{% endblock %}
